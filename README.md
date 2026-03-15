@@ -10,8 +10,9 @@ This portfolio is crafted using [Next.js](https://nextjs.org/)
 - [Framer motion](https://www.framer.com/motion/): A React animation library that brings motion to your user interfaces.
 - [Nodemailer](https://nodemailer.com/): A Node.js library facilitating easy email integration with features like attachment handling, HTML content, and support for various email services.
 
-## 🌐 Live Link alokkkportfolio.netlify.app
-
+## 🌐 Live Link
+[alokkkportfolio
+](https://alokkkportfolio.netlify.app/)
 
 ## 🌐 Open Source
 
