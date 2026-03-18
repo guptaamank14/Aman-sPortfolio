@@ -3,6 +3,7 @@ import { NextSeo } from "next-seo";
 import dynamic from "next/dynamic";
 
 import AboutHero from "@/components/about-hero";
+import CVSection from "@/components/cv-section";
 import { EXPERIENCE } from "@/data/experience";
 import { EDUCATION } from "@/data/education";
 import { siteMetadata } from "@/data/siteMetaData.mjs";
@@ -45,6 +46,7 @@ export default function About() {
         ]}
       />
       <AboutHero />
+      <CVSection />
       <ExperienceShowcaseList title="Experience" details={EXPERIENCE} />
       <ExperienceShowcaseList title="Education" details={EDUCATION} />
     </>
