@@ -1,7 +1,22 @@
 import FadeUp from "@/animation/fade-up";
 import { AnimatePresence } from "framer-motion";
 
-const CV_PATH = "/Alok-Kumar-Sharma-CV.pdf";
+const CVS = [
+  {
+    id: "general",
+    label: "General CV",
+    filename: "Alok Kumar Sharma — General",
+    path: "/Alok-Kumar-Sharma-CV.pdf",
+    download: "Alok-Kumar-Sharma-General-CV.pdf",
+  },
+  {
+    id: "main",
+    label: "Main CV",
+    filename: "Alok Kumar — CV",
+    path: "/Alok-Kumar-CV.pdf",
+    download: "Alok-Kumar-CV.pdf",
+  },
+];
 
 export default function CVSection() {
   return (
@@ -18,119 +33,144 @@ export default function CVSection() {
           </div>
         </FadeUp>
 
-        <FadeUp key="cv-card" duration={0.6} delay={0.2}>
-          <div className="cv-card">
-            {/* PDF Thumbnail */}
-            <div className="cv-preview-wrapper">
-              <iframe
-                src={`${CV_PATH}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                title="Alok Kumar Sharma - CV Preview"
-                className="cv-iframe"
-              />
-              {/* Overlay to block iframe interaction and keep it clean */}
-              <div className="cv-overlay" />
-            </div>
+        <FadeUp key="cv-grid" duration={0.6} delay={0.2}>
+          <div className="cv-grid">
+            {CVS.map((cv, i) => (
+              <div key={cv.id} className="cv-card">
+                {/* Badge */}
+                <span className="cv-badge">{cv.label}</span>
 
-            {/* Info + Download */}
-            <div className="cv-info">
-              <div className="cv-meta">
-                <div className="cv-icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="1.8"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="cv-icon-svg"
-                  >
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
-                    <polyline points="10 9 9 9 8 9" />
-                  </svg>
+                {/* PDF Thumbnail */}
+                <div className="cv-preview-wrapper">
+                  <iframe
+                    src={`${cv.path}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                    title={`${cv.filename} Preview`}
+                    className="cv-iframe"
+                  />
+                  {/* Overlay keeps the iframe non-interactive visually */}
+                  <div className="cv-overlay" />
                 </div>
-                <div>
-                  <p className="cv-filename">Alok Kumar Sharma — General CV</p>
-                  <p className="cv-filetype">PDF Document</p>
+
+                {/* Card footer */}
+                <div className="cv-footer">
+                  <div className="cv-meta">
+                    {/* PDF icon */}
+                    <div className="cv-icon">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="cv-icon-svg"
+                      >
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                      </svg>
+                    </div>
+                    <div>
+                      <p className="cv-filename">{cv.filename}</p>
+                      <p className="cv-filetype">PDF Document</p>
+                    </div>
+                  </div>
+
+                  <a
+                    href={cv.path}
+                    download={cv.download}
+                    className="cv-download-btn"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="cv-btn-icon"
+                    >
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                      <polyline points="7 10 12 15 17 10" />
+                      <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download
+                  </a>
                 </div>
               </div>
-
-              <a
-                href={CV_PATH}
-                download="Alok-Kumar-Sharma-CV.pdf"
-                className="cv-download-btn"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="cv-btn-icon"
-                >
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                  <polyline points="7 10 12 15 17 10" />
-                  <line x1="12" y1="15" x2="12" y2="3" />
-                </svg>
-                Download CV
-              </a>
-            </div>
+            ))}
           </div>
         </FadeUp>
       </AnimatePresence>
 
       <style jsx>{`
+        /* ── Grid ─────────────────────────────── */
+        .cv-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+          .cv-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
+        }
+
+        /* ── Card ─────────────────────────────── */
         .cv-card {
+          position: relative;
           display: flex;
           flex-direction: column;
-          gap: 2rem;
-          border-radius: 1.5rem;
+          gap: 1.25rem;
+          border-radius: 1.25rem;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(12px);
-          padding: 2rem;
+          padding: 1.5rem;
           box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.2),
-            0 0 0 1px rgba(255, 255, 255, 0.05);
-          transition: box-shadow 0.3s ease;
+            0 0 0 1px rgba(255, 255, 255, 0.04);
+          transition:
+            box-shadow 0.3s ease,
+            transform 0.3s ease;
         }
 
         .cv-card:hover {
+          transform: translateY(-4px);
           box-shadow:
-            0 16px 48px rgba(0, 0, 0, 0.3),
-            0 0 0 1px rgba(0, 191, 255, 0.15);
+            0 20px 48px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(0, 191, 255, 0.18);
         }
 
-        @media (min-width: 1024px) {
-          .cv-card {
-            flex-direction: row;
-            align-items: flex-start;
-          }
+        /* ── Badge ────────────────────────────── */
+        .cv-badge {
+          display: inline-block;
+          align-self: flex-start;
+          padding: 0.25rem 0.85rem;
+          border-radius: 2rem;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.08em;
+          text-transform: uppercase;
+          background: linear-gradient(135deg, #00bfff22, #a855f722);
+          border: 1px solid rgba(0, 191, 255, 0.3);
+          color: #00bfff;
         }
 
-        /* PDF Preview */
+        /* ── PDF Thumbnail ────────────────────── */
         .cv-preview-wrapper {
           position: relative;
-          flex-shrink: 0;
           width: 100%;
-          height: 480px;
-          border-radius: 1rem;
+          height: 300px;
+          border-radius: 0.75rem;
           overflow: hidden;
           border: 1px solid rgba(255, 255, 255, 0.1);
           background: #fff;
-          box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
-        }
-
-        @media (min-width: 1024px) {
-          .cv-preview-wrapper {
-            width: 420px;
-            height: 560px;
-          }
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
         }
 
         .cv-iframe {
@@ -138,96 +178,94 @@ export default function CVSection() {
           height: 100%;
           border: none;
           display: block;
-          border-radius: 1rem;
+          /* Scale down so both pages are fully visible in the small preview */
+          transform: scale(0.9);
+          transform-origin: top left;
+          width: 111%;
+          height: 111%;
         }
 
-        /* Transparent overlay — blocks pointer events on iframe so rest of page stays interactive */
         .cv-overlay {
           position: absolute;
           inset: 0;
           z-index: 1;
+          border-radius: 0.75rem;
           cursor: default;
-          border-radius: 1rem;
         }
 
-        /* Info panel */
-        .cv-info {
+        /* ── Card Footer ──────────────────────── */
+        .cv-footer {
           display: flex;
-          flex-direction: column;
+          align-items: center;
           justify-content: space-between;
-          gap: 2rem;
-          flex: 1;
-          padding: 0.5rem 0;
+          gap: 1rem;
+          flex-wrap: wrap;
         }
 
         .cv-meta {
           display: flex;
           align-items: center;
-          gap: 1rem;
+          gap: 0.75rem;
+          min-width: 0;
         }
 
         .cv-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 3.5rem;
-          height: 3.5rem;
-          border-radius: 0.875rem;
-          background: linear-gradient(135deg, #00bfff22, #a855f722);
-          border: 1px solid rgba(0, 191, 255, 0.25);
+          width: 2.75rem;
+          height: 2.75rem;
+          border-radius: 0.75rem;
+          background: linear-gradient(135deg, #00bfff18, #a855f718);
+          border: 1px solid rgba(0, 191, 255, 0.2);
           flex-shrink: 0;
         }
 
         .cv-icon-svg {
-          width: 1.6rem;
-          height: 1.6rem;
+          width: 1.25rem;
+          height: 1.25rem;
           color: #00bfff;
         }
 
         .cv-filename {
-          font-size: 1rem;
+          font-size: 0.875rem;
           font-weight: 600;
-          color: inherit;
           margin: 0;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
 
         .cv-filetype {
-          font-size: 0.8rem;
+          font-size: 0.72rem;
           color: #888;
           margin: 0;
           margin-top: 2px;
         }
 
-        /* Download button */
+        /* ── Download Button ──────────────────── */
         .cv-download-btn {
           display: inline-flex;
           align-items: center;
-          justify-content: center;
-          gap: 0.6rem;
-          padding: 0.85rem 2rem;
-          border-radius: 0.875rem;
-          font-size: 1rem;
+          gap: 0.45rem;
+          padding: 0.6rem 1.25rem;
+          border-radius: 0.625rem;
+          font-size: 0.875rem;
           font-weight: 600;
           color: #fff;
           background: linear-gradient(135deg, #00bfff, #a855f7);
-          box-shadow:
-            0 4px 20px rgba(0, 191, 255, 0.35),
-            0 2px 8px rgba(168, 85, 247, 0.2);
+          box-shadow: 0 4px 16px rgba(0, 191, 255, 0.3);
           text-decoration: none;
+          white-space: nowrap;
+          flex-shrink: 0;
           transition:
-            transform 0.25s ease,
-            box-shadow 0.25s ease,
-            opacity 0.25s ease;
-          align-self: flex-start;
-          pointer-events: auto;
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
         }
 
         .cv-download-btn:hover {
           transform: translateY(-2px);
-          box-shadow:
-            0 8px 32px rgba(0, 191, 255, 0.5),
-            0 4px 16px rgba(168, 85, 247, 0.35);
-          opacity: 0.95;
+          box-shadow: 0 8px 28px rgba(0, 191, 255, 0.5);
         }
 
         .cv-download-btn:active {
@@ -235,8 +273,8 @@ export default function CVSection() {
         }
 
         .cv-btn-icon {
-          width: 1.2rem;
-          height: 1.2rem;
+          width: 1rem;
+          height: 1rem;
         }
       `}</style>
     </section>
