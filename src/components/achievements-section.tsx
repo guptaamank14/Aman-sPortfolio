@@ -194,6 +194,7 @@ export default function AchievementsSection() {
         /* Thumbnail — plain container, no transform scaling */
         .ach-thumb-wrapper {
           width: 100%;
+          aspect-ratio: 297 / 210;
           background: #fff;
           overflow: hidden;
           flex-shrink: 0;

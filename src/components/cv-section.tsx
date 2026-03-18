@@ -44,9 +44,9 @@ export default function CVSection() {
           <div className="cv-grid">
             {CVS.map((cv) => (
               <div key={cv.id} className="cv-card">
-                {/* PDF Thumbnail — crisp canvas render */}
+                {/* PDF Thumbnail — crisp canvas render at lower resolution for speed */}
                 <div className="cv-preview-wrapper">
-                  <PdfThumbnail src={cv.path} width={600} />
+                  <PdfThumbnail src={cv.path} width={200} />
                 </div>
 
                 {/* Card footer */}
@@ -107,10 +107,10 @@ export default function CVSection() {
         .cv-grid {
           display: grid;
           grid-template-columns: 1fr;
-          gap: 2rem;
+          gap: 1.5rem;
         }
 
-        @media (min-width: 768px) {
+        @media (min-width: 1024px) {
           .cv-grid {
             grid-template-columns: repeat(2, 1fr);
           }
@@ -119,8 +119,9 @@ export default function CVSection() {
         .cv-card {
           position: relative;
           display: flex;
-          flex-direction: column;
-          gap: 1.25rem;
+          flex-direction: row;
+          align-items: center;
+          gap: 1.5rem;
           border-radius: 1.25rem;
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(255, 255, 255, 0.03);
@@ -141,59 +142,61 @@ export default function CVSection() {
             0 0 0 1px rgba(0, 191, 255, 0.18);
         }
 
-        /* PDF Preview box — just clips the canvas output, no scaling */
         .cv-preview-wrapper {
-          width: 100%;
-          border-radius: 0.75rem;
+          width: 110px;
+          flex-shrink: 0;
+          aspect-ratio: 210 / 297;
+          border-radius: 0.5rem;
           overflow: hidden;
           border: 1px solid rgba(0, 0, 0, 0.08);
           background: #fff;
-          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
           line-height: 0;
         }
 
         .cv-footer {
           display: flex;
-          align-items: center;
-          justify-content: space-between;
-          gap: 1rem;
-          flex-wrap: wrap;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1.25rem;
+          flex: 1;
         }
 
         .cv-meta {
           display: flex;
           align-items: center;
-          gap: 0.75rem;
-          min-width: 0;
+          gap: 0.85rem;
         }
 
         .cv-icon {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 2.75rem;
-          height: 2.75rem;
+          width: 3rem;
+          height: 3rem;
           border-radius: 0.75rem;
-          background: linear-gradient(135deg, #00bfff18, #a855f718);
+          background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(168, 85, 247, 0.1));
           border: 1px solid rgba(0, 191, 255, 0.2);
           flex-shrink: 0;
         }
 
         .cv-icon-svg {
-          width: 1.25rem;
-          height: 1.25rem;
+          width: 1.4rem;
+          height: 1.4rem;
           color: #00bfff;
         }
 
         .cv-filename {
-          font-size: 0.875rem;
+          font-size: 0.95rem;
           font-weight: 600;
+          color: #e4e4e7;
           margin: 0;
+          line-height: 1.4;
         }
 
         .cv-filetype {
-          font-size: 0.72rem;
-          color: #888;
+          font-size: 0.75rem;
+          color: #a1a1aa;
           margin: 0;
           margin-top: 2px;
         }
@@ -201,17 +204,16 @@ export default function CVSection() {
         .cv-download-btn {
           display: inline-flex;
           align-items: center;
-          gap: 0.45rem;
+          gap: 0.5rem;
           padding: 0.6rem 1.25rem;
           border-radius: 0.625rem;
-          font-size: 0.875rem;
+          font-size: 0.85rem;
           font-weight: 600;
           color: #fff;
           background: linear-gradient(135deg, #00bfff, #a855f7);
           box-shadow: 0 4px 16px rgba(0, 191, 255, 0.3);
           text-decoration: none;
           white-space: nowrap;
-          flex-shrink: 0;
           transition:
             transform 0.2s ease,
             box-shadow 0.2s ease;

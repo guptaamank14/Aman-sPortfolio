@@ -49,7 +49,7 @@ export default function ProjectShowcase(props: ProjectShowcaseProps) {
                 type: "spring",
                 stiffness: 100,
               }}
-              className="absolute right-0 top-0 -z-50"
+              className="absolute right-0 top-0 z-0"
             >
               <Image
                 src={images[currentImage].LIGHT}
