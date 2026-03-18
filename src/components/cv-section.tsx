@@ -1,5 +1,12 @@
+import dynamic from "next/dynamic";
 import FadeUp from "@/animation/fade-up";
 import { AnimatePresence } from "framer-motion";
+
+// Load PDF thumbnail client-side only (react-pdf requires browser APIs)
+const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
+  ssr: false,
+  loading: () => <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700 rounded-xl" />,
+});
 
 const CVS = [
   {
@@ -35,26 +42,16 @@ export default function CVSection() {
 
         <FadeUp key="cv-grid" duration={0.6} delay={0.2}>
           <div className="cv-grid">
-            {CVS.map((cv, i) => (
+            {CVS.map((cv) => (
               <div key={cv.id} className="cv-card">
-                {/* Badge */}
-                <span className="cv-badge">{cv.label}</span>
-
-                {/* PDF Thumbnail */}
+                {/* PDF Thumbnail — crisp canvas render */}
                 <div className="cv-preview-wrapper">
-                  <iframe
-                    src={`${cv.path}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                    title={`${cv.filename} Preview`}
-                    className="cv-iframe"
-                  />
-                  {/* Overlay keeps the iframe non-interactive visually */}
-                  <div className="cv-overlay" />
+                  <PdfThumbnail src={cv.path} width={600} />
                 </div>
 
                 {/* Card footer */}
                 <div className="cv-footer">
                   <div className="cv-meta">
-                    {/* PDF icon */}
                     <div className="cv-icon">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -107,7 +104,6 @@ export default function CVSection() {
       </AnimatePresence>
 
       <style jsx>{`
-        /* ── Grid ─────────────────────────────── */
         .cv-grid {
           display: grid;
           grid-template-columns: 1fr;
@@ -120,7 +116,6 @@ export default function CVSection() {
           }
         }
 
-        /* ── Card ─────────────────────────────── */
         .cv-card {
           position: relative;
           display: flex;
@@ -130,7 +125,7 @@ export default function CVSection() {
           border: 1px solid rgba(255, 255, 255, 0.08);
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(12px);
-          padding: 1.5rem;
+          padding: 1.25rem;
           box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.2),
             0 0 0 1px rgba(255, 255, 255, 0.04);
@@ -146,54 +141,17 @@ export default function CVSection() {
             0 0 0 1px rgba(0, 191, 255, 0.18);
         }
 
-        /* ── Badge ────────────────────────────── */
-        .cv-badge {
-          display: inline-block;
-          align-self: flex-start;
-          padding: 0.25rem 0.85rem;
-          border-radius: 2rem;
-          font-size: 0.7rem;
-          font-weight: 700;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          background: linear-gradient(135deg, #00bfff22, #a855f722);
-          border: 1px solid rgba(0, 191, 255, 0.3);
-          color: #00bfff;
-        }
-
-        /* ── PDF Thumbnail ────────────────────── */
+        /* PDF Preview box — just clips the canvas output, no scaling */
         .cv-preview-wrapper {
-          position: relative;
           width: 100%;
-          height: 300px;
           border-radius: 0.75rem;
           overflow: hidden;
-          border: 1px solid rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(0, 0, 0, 0.08);
           background: #fff;
-          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+          line-height: 0;
         }
 
-        .cv-iframe {
-          width: 100%;
-          height: 100%;
-          border: none;
-          display: block;
-          /* Scale down so both pages are fully visible in the small preview */
-          transform: scale(0.9);
-          transform-origin: top left;
-          width: 111%;
-          height: 111%;
-        }
-
-        .cv-overlay {
-          position: absolute;
-          inset: 0;
-          z-index: 1;
-          border-radius: 0.75rem;
-          cursor: default;
-        }
-
-        /* ── Card Footer ──────────────────────── */
         .cv-footer {
           display: flex;
           align-items: center;
@@ -231,9 +189,6 @@ export default function CVSection() {
           font-size: 0.875rem;
           font-weight: 600;
           margin: 0;
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
         }
 
         .cv-filetype {
@@ -243,7 +198,6 @@ export default function CVSection() {
           margin-top: 2px;
         }
 
-        /* ── Download Button ──────────────────── */
         .cv-download-btn {
           display: inline-flex;
           align-items: center;
@@ -266,10 +220,6 @@ export default function CVSection() {
         .cv-download-btn:hover {
           transform: translateY(-2px);
           box-shadow: 0 8px 28px rgba(0, 191, 255, 0.5);
-        }
-
-        .cv-download-btn:active {
-          transform: translateY(0);
         }
 
         .cv-btn-icon {
