@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import FadeUp from "@/animation/fade-up";
 import { AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
   ssr: false,
@@ -70,7 +71,7 @@ export default function AchievementsSection() {
         <FadeUp key="ach-heading" duration={0.6}>
           <div className="mb-10 text-center lg:text-left">
             <h2 className="text-3xl font-bold text-accent sm:text-4xl">
-              Achievements &amp; Certifications
+              Achievements
             </h2>
             <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">
               Hackathons competed and recognized — here&apos;s proof of work.
@@ -90,9 +91,21 @@ export default function AchievementsSection() {
                   }}
                 />
 
-                {/* PDF Thumbnail — crisp canvas render scaled down for speed */}
+                {/* Thumbnail — crisp canvas render scaled down for speed or static image */}
                 <div className="ach-thumb-wrapper">
-                  <PdfThumbnail src={ach.pdfPath} width={200} />
+                  {ach.pdfPath.toLowerCase().endsWith(".pdf") ? (
+                    <PdfThumbnail src={ach.pdfPath} width={200} />
+                  ) : (
+                    <div className="relative h-full w-full">
+                      <Image
+                        src={ach.pdfPath}
+                        alt={`${ach.title} thumbnail`}
+                        fill
+                        className="object-cover"
+                        unoptimized
+                      />
+                    </div>
+                  )}
                 </div>
 
                 {/* Info */}
