@@ -9,8 +9,6 @@ export const EXPERIENCE: ExperienceShowcaseListItemProps[] = [
     },
     date: "Nov 2025 - Jan 2026 · 3 mos",
     location: "Remote",
-    description:
-      "React.js, Responsive Web Design and +2 skills",
+    description: "React.js, Responsive Web Design and +2 skills",
   },
 ];
-

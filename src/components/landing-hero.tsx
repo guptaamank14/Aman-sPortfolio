@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import Image from "next/image";
+import profileImg from "@/public/images/profile.png";
 
 import {
   AnimatePresence,
@@ -57,11 +58,11 @@ export default function LandingHero() {
                   <div className="profile-circle-ring">
                     <div className="profile-circle-inner">
                       <Image
-                        src="/images/profile.png"
+                        src={profileImg}
                         alt="Alok Kumar - Profile"
                         fill
                         className="profile-circle-img"
-                        unoptimized
+                        placeholder="blur"
                         priority
                       />
                     </div>
