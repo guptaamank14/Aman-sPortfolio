@@ -5,7 +5,9 @@ import { AnimatePresence } from "framer-motion";
 // Load PDF thumbnail client-side only (react-pdf requires browser APIs)
 const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
   ssr: false,
-  loading: () => <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700 rounded-xl" />,
+  loading: () => (
+    <div className="h-full w-full animate-pulse rounded-xl bg-zinc-200 dark:bg-zinc-700" />
+  ),
 });
 
 const CVS = [
@@ -35,7 +37,8 @@ export default function CVSection() {
               My Resume
             </h2>
             <p className="mt-2 text-base text-zinc-600 dark:text-zinc-400">
-              A quick look at my professional background — download a copy below.
+              A quick look at my professional background — download a copy
+              below.
             </p>
           </div>
         </FadeUp>
@@ -127,18 +130,14 @@ export default function CVSection() {
           background: rgba(255, 255, 255, 0.03);
           backdrop-filter: blur(12px);
           padding: 1.25rem;
-          box-shadow:
-            0 8px 32px rgba(0, 0, 0, 0.2),
+          box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2),
             0 0 0 1px rgba(255, 255, 255, 0.04);
-          transition:
-            box-shadow 0.3s ease,
-            transform 0.3s ease;
+          transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .cv-card:hover {
           transform: translateY(-4px);
-          box-shadow:
-            0 20px 48px rgba(0, 0, 0, 0.3),
+          box-shadow: 0 20px 48px rgba(0, 0, 0, 0.3),
             0 0 0 1px rgba(0, 191, 255, 0.18);
         }
 
@@ -175,7 +174,11 @@ export default function CVSection() {
           width: 3rem;
           height: 3rem;
           border-radius: 0.75rem;
-          background: linear-gradient(135deg, rgba(0, 191, 255, 0.1), rgba(168, 85, 247, 0.1));
+          background: linear-gradient(
+            135deg,
+            rgba(0, 191, 255, 0.1),
+            rgba(168, 85, 247, 0.1)
+          );
           border: 1px solid rgba(0, 191, 255, 0.2);
           flex-shrink: 0;
         }
@@ -214,9 +217,7 @@ export default function CVSection() {
           box-shadow: 0 4px 16px rgba(0, 191, 255, 0.3);
           text-decoration: none;
           white-space: nowrap;
-          transition:
-            transform 0.2s ease,
-            box-shadow 0.2s ease;
+          transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
         .cv-download-btn:hover {

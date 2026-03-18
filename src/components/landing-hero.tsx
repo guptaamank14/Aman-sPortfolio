@@ -41,9 +41,9 @@ export default function LandingHero() {
               </FadeUp>
               <FadeUp key="description" duration={0.6} delay={0.2}>
                 <div className="mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
-                  Full Stack Engineer | Learning Devops &amp; Cloud |C++ &amp; DSA |
-                  Attented 4+, National Hackathon Winner 1 x🏆| Building Scalable
-                  Websites | Open Source and Linux Enthusiast
+                  Full Stack Engineer | Learning Devops &amp; Cloud |C++ &amp;
+                  DSA | Attented 4+, National Hackathon Winner 1 x🏆| Building
+                  Scalable Websites | Open Source and Linux Enthusiast
                 </div>
               </FadeUp>
             </AnimatePresence>
@@ -109,7 +109,7 @@ export default function LandingHero() {
 
         /* Spinning gradient ring — pseudo-element, completely independent of the image */
         .profile-circle-ring::before {
-          content: '';
+          content: "";
           position: absolute;
           inset: -5px;
           border-radius: 50%;
@@ -127,7 +127,7 @@ export default function LandingHero() {
 
         /* Blurred glow layer — also a pseudo-element, no impact on image */
         .profile-circle-ring::after {
-          content: '';
+          content: "";
           position: absolute;
           inset: -10px;
           border-radius: 50%;

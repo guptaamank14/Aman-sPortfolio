@@ -4,7 +4,7 @@ import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
 // Use the locally copied worker to bypass all CORS and Webpack import issues
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
 
 type Props = {
   src: string;
@@ -35,14 +35,22 @@ export default function PdfThumbnail({ src, width = 400 }: Props) {
   }
 
   return (
-    <div style={{ width: "100%", height: "100%", overflow: "hidden", position: "relative" }}>
+    <div
+      style={{
+        width: "100%",
+        height: "100%",
+        overflow: "hidden",
+        position: "relative",
+      }}
+    >
       {/* Skeleton shimmer while loading */}
       {!loaded && (
         <div
           style={{
             position: "absolute",
             inset: 0,
-            background: "linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%)",
+            background:
+              "linear-gradient(90deg, #e8e8e8 25%, #f5f5f5 50%, #e8e8e8 75%)",
             backgroundSize: "200% 100%",
             animation: "shimmer 1.4s infinite",
             zIndex: 0,

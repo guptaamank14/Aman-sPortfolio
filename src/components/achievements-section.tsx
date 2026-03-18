@@ -4,7 +4,9 @@ import { AnimatePresence } from "framer-motion";
 
 const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
   ssr: false,
-  loading: () => <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700" />,
+  loading: () => (
+    <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700" />
+  ),
 });
 
 type Achievement = {
@@ -80,15 +82,17 @@ export default function AchievementsSection() {
           <div className="ach-grid">
             {ACHIEVEMENTS.map((ach) => (
               <div key={ach.id} className="ach-card">
-                {/* Colored top accent bar */}
+                {/* Colored accent bar on the left */}
                 <div
                   className="ach-bar"
-                  style={{ background: `linear-gradient(90deg, ${ach.color})` }}
+                  style={{
+                    background: `linear-gradient(180deg, ${ach.color})`,
+                  }}
                 />
 
-                {/* PDF Thumbnail — crisp canvas render */}
+                {/* PDF Thumbnail — crisp canvas render scaled down for speed */}
                 <div className="ach-thumb-wrapper">
-                  <PdfThumbnail src={ach.pdfPath} width={480} />
+                  <PdfThumbnail src={ach.pdfPath} width={200} />
                 </div>
 
                 {/* Info */}
@@ -98,7 +102,15 @@ export default function AchievementsSection() {
 
                   <div className="ach-row">
                     <span className="ach-tag">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ach-tag-icon">
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ach-tag-icon"
+                      >
                         <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
                         <polyline points="9 22 9 12 15 12 15 22" />
                       </svg>
@@ -108,8 +120,23 @@ export default function AchievementsSection() {
 
                   <div className="ach-row">
                     <span className="ach-tag">
-                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="ach-tag-icon">
-                        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                      <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="ach-tag-icon"
+                      >
+                        <rect
+                          x="2"
+                          y="7"
+                          width="20"
+                          height="14"
+                          rx="2"
+                          ry="2"
+                        />
                         <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
                       </svg>
                       {ach.issuer}
@@ -131,7 +158,10 @@ export default function AchievementsSection() {
 
                   {ach.credentialId !== "—" && (
                     <p className="ach-credential">
-                      ID: <span className="ach-credential-value">{ach.credentialId}</span>
+                      ID:{" "}
+                      <span className="ach-credential-value">
+                        {ach.credentialId}
+                      </span>
                     </p>
                   )}
 
@@ -139,14 +169,25 @@ export default function AchievementsSection() {
                     href={ach.pdfPath}
                     download={ach.download}
                     className="ach-download-btn"
-                    style={{ background: `linear-gradient(135deg, ${ach.color})` }}
+                    style={{
+                      background: `linear-gradient(135deg, ${ach.color})`,
+                    }}
                   >
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" className="ach-btn-icon">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2.2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="ach-btn-icon"
+                    >
                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
                       <polyline points="7 10 12 15 17 10" />
                       <line x1="12" y1="15" x2="12" y2="3" />
                     </svg>
-                    Download Certificate
+                    Download
                   </a>
                 </div>
               </div>
@@ -161,17 +202,17 @@ export default function AchievementsSection() {
           grid-template-columns: 1fr;
           gap: 1.5rem;
         }
-        @media (min-width: 640px) {
-          .ach-grid { grid-template-columns: repeat(2, 1fr); }
-        }
         @media (min-width: 1024px) {
-          .ach-grid { grid-template-columns: repeat(3, 1fr); }
+          .ach-grid {
+            grid-template-columns: repeat(2, 1fr);
+          }
         }
 
         .ach-card {
           position: relative;
           display: flex;
-          flex-direction: column;
+          flex-direction: row;
+          align-items: center;
           border-radius: 1.125rem;
           border: 1px solid rgba(255, 255, 255, 0.07);
           background: rgba(255, 255, 255, 0.025);
@@ -179,6 +220,7 @@ export default function AchievementsSection() {
           overflow: hidden;
           box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
           transition: transform 0.3s ease, box-shadow 0.3s ease;
+          padding-right: 1.25rem;
         }
         .ach-card:hover {
           transform: translateY(-5px);
@@ -186,27 +228,33 @@ export default function AchievementsSection() {
         }
 
         .ach-bar {
-          height: 4px;
-          width: 100%;
-          flex-shrink: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          width: 4px;
+          height: 100%;
         }
 
-        /* Thumbnail — plain container, no transform scaling */
         .ach-thumb-wrapper {
-          width: 100%;
+          width: 130px;
           aspect-ratio: 297 / 210;
           background: #fff;
           overflow: hidden;
           flex-shrink: 0;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+          border: 1px solid rgba(0, 0, 0, 0.06);
+          border-radius: 0.5rem;
           line-height: 0;
+          margin: 1.25rem;
+          margin-left: 1.5rem;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .ach-body {
           display: flex;
           flex-direction: column;
           gap: 0.5rem;
-          padding: 1rem 1rem 1.1rem;
+          padding: 1.25rem 0;
           flex: 1;
         }
         .ach-result {
@@ -279,15 +327,16 @@ export default function AchievementsSection() {
           align-items: center;
           justify-content: center;
           gap: 0.4rem;
-          margin-top: auto;
+          margin-top: 0.5rem;
           padding: 0.5rem 0.9rem;
           border-radius: 0.5rem;
           font-size: 0.78rem;
           font-weight: 600;
           color: #fff;
           text-decoration: none;
-          box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
           transition: transform 0.2s ease, opacity 0.2s ease;
+          align-self: flex-start;
         }
         .ach-download-btn:hover {
           transform: translateY(-1px);
