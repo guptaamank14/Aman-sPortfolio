@@ -241,6 +241,7 @@ export default function AchievementsSection() {
           aspect-ratio: 297 / 210;
           background: #fff;
           overflow: hidden;
+          position: relative;
           flex-shrink: 0;
           border: 1px solid rgba(0, 0, 0, 0.06);
           border-radius: 0.5rem;

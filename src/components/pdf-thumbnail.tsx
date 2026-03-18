@@ -3,8 +3,8 @@ import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
 import "react-pdf/dist/Page/TextLayer.css";
 
-// Use the locally copied worker to bypass all CORS and Webpack import issues
-pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.mjs";
+// Use the locally copied worker to bypass all CORS and Webpack import issues (.js to avoid MIME blocking)
+pdfjs.GlobalWorkerOptions.workerSrc = "/pdf.worker.min.js";
 
 type Props = {
   src: string;
@@ -18,7 +18,7 @@ export default function PdfThumbnail({ src, width = 400 }: Props) {
   if (error) {
     // Fallback: simple styled placeholder
     return (
-      <div className="flex h-full w-full items-center justify-center bg-zinc-100 dark:bg-zinc-800">
+      <div className="flex absolute inset-0 w-full h-full items-center justify-center bg-zinc-100 dark:bg-zinc-800">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -39,8 +39,13 @@ export default function PdfThumbnail({ src, width = 400 }: Props) {
       style={{
         width: "100%",
         height: "100%",
+        position: "absolute",
+        inset: 0,
         overflow: "hidden",
-        position: "relative",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "#fff",
       }}
     >
       {/* Skeleton shimmer while loading */}

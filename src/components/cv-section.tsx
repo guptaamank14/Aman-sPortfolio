@@ -147,6 +147,7 @@ export default function CVSection() {
           aspect-ratio: 210 / 297;
           border-radius: 0.5rem;
           overflow: hidden;
+          position: relative;
           border: 1px solid rgba(0, 0, 0, 0.08);
           background: #fff;
           box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
