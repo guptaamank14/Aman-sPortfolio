@@ -5,12 +5,29 @@ import { AnimatePresence } from "framer-motion";
 
 import FadeUp from "@/animation/fade-up";
 import FadeRight from "@/animation/fade-right";
+import heroProfileImg from "@/public/images/heroProfile.png";
+import DuotoneImage from "./duotone-image";
 
 export default function AboutHero() {
   return (
-    <div className="mx-auto mt-0 flex max-w-7xl flex-col items-center gap-10 px-6 pt-20 sm:px-14 md:mt-20 md:px-20 lg:mt-0 lg:flex-row lg:items-center lg:justify-between lg:text-left">
-      {/* Left: Text Content */}
-      <div className="w-full text-center lg:w-1/2 lg:text-left">
+    <div className="mx-auto mt-0 flex max-w-7xl flex-col items-center gap-6 px-6 pt-20 text-center sm:px-14 md:mt-20 md:px-20 lg:mt-0 lg:flex-row lg:text-left">
+      <div className="w-full sm:w-1/2 md:w-2/3 lg:inline-block lg:h-full lg:w-1/2">
+        <AnimatePresence>
+          <FadeUp key="hero-image" duration={0.6}>
+            <DuotoneImage
+              src={heroProfileImg}
+              width={100}
+              height={100}
+              className="h-auto w-full px-0 xl:px-16"
+              alt="hero image"
+              lightColor="#E0FFFF"
+              darkColor="#004D4D"
+              unoptimized
+            />
+          </FadeUp>
+        </AnimatePresence>
+      </div>
+      <div className="sm:1/2 mt-10 w-full lg:w-1/2">
         <AnimatePresence>
           <FadeUp key="title-greeting" duration={0.6}>
             <h1 className="text-6xl font-bold text-accent sm:text-7xl md:text-6xl lg:text-5xl xl:text-7xl">
@@ -38,7 +55,7 @@ export default function AboutHero() {
             key="hero-location"
             duration={0.6}
             delay={0.8}
-            className="mt-8 flex items-center justify-center gap-4 lg:justify-start"
+            className="mr-0 mt-8 flex items-center justify-center gap-4 lg:mr-8 lg:justify-end"
           >
             <div className="relative flex w-12 gap-4 overflow-hidden rounded-md">
               <Image
@@ -55,146 +72,6 @@ export default function AboutHero() {
           </FadeRight>
         </AnimatePresence>
       </div>
-
-      {/* Right: Circular Profile Image */}
-      <div className="flex w-full items-center justify-center lg:w-1/2 lg:justify-end">
-        <AnimatePresence>
-          <FadeUp key="hero-profile" duration={0.7} delay={0.2}>
-            <div className="profile-circle-wrapper">
-              <div className="profile-circle-ring">
-                <div className="profile-circle-inner">
-                  <Image
-                    src="/images/profile.png"
-                    alt="Alok Kumar - Profile"
-                    width={480}
-                    height={480}
-                    className="profile-circle-img"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </FadeUp>
-        </AnimatePresence>
-      </div>
-
-      <style jsx>{`
-        .profile-circle-wrapper {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          padding: 6px;
-        }
-
-        .profile-circle-ring {
-          width: 380px;
-          height: 380px;
-          border-radius: 50%;
-          padding: 5px;
-          background: conic-gradient(
-            from 0deg,
-            #00bfff,
-            #007bff,
-            #a855f7,
-            #ec4899,
-            #00bfff
-          );
-          box-shadow:
-            0 0 40px rgba(0, 191, 255, 0.35),
-            0 0 80px rgba(168, 85, 247, 0.2);
-          animation: spin-ring 6s linear infinite;
-        }
-
-        @media (min-width: 640px) {
-          .profile-circle-ring {
-            width: 440px;
-            height: 440px;
-          }
-        }
-
-        @keyframes spin-ring {
-          0% {
-            background: conic-gradient(
-              from 0deg,
-              #00bfff,
-              #007bff,
-              #a855f7,
-              #ec4899,
-              #00bfff
-            );
-          }
-          25% {
-            background: conic-gradient(
-              from 90deg,
-              #00bfff,
-              #007bff,
-              #a855f7,
-              #ec4899,
-              #00bfff
-            );
-          }
-          50% {
-            background: conic-gradient(
-              from 180deg,
-              #00bfff,
-              #007bff,
-              #a855f7,
-              #ec4899,
-              #00bfff
-            );
-          }
-          75% {
-            background: conic-gradient(
-              from 270deg,
-              #00bfff,
-              #007bff,
-              #a855f7,
-              #ec4899,
-              #00bfff
-            );
-          }
-          100% {
-            background: conic-gradient(
-              from 360deg,
-              #00bfff,
-              #007bff,
-              #a855f7,
-              #ec4899,
-              #00bfff
-            );
-          }
-        }
-
-        .profile-circle-inner {
-          width: 100%;
-          height: 100%;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 4px solid #0a0a0a;
-          background: #0a0a0a;
-        }
-
-        .profile-circle-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          object-position: center top;
-          border-radius: 50%;
-          display: block;
-          transition: transform 0.4s ease;
-        }
-
-        .profile-circle-wrapper:hover .profile-circle-img {
-          transform: scale(1.04);
-        }
-
-        .profile-circle-wrapper:hover .profile-circle-ring {
-          box-shadow:
-            0 0 60px rgba(0, 191, 255, 0.55),
-            0 0 120px rgba(168, 85, 247, 0.35);
-        }
-      `}</style>
     </div>
   );
 }
