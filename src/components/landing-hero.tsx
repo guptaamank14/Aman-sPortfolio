@@ -82,24 +82,15 @@ export default function LandingHero() {
           padding: 6px;
         }
 
+        /* Ring container — only for sizing, NO filter here */
         .profile-circle-ring {
+          position: relative;
           width: 340px;
           height: 340px;
           border-radius: 50%;
-          padding: 5px;
-          background: conic-gradient(
-            from 0deg,
-            #00bfff,
-            #007bff,
-            #a855f7,
-            #ec4899,
-            #00bfff
-          );
-          box-shadow:
-            0 0 40px rgba(0, 191, 255, 0.4),
-            0 0 80px rgba(168, 85, 247, 0.25),
-            0 0 120px rgba(0, 191, 255, 0.1);
-          animation: rotate-ring 4s linear infinite;
+          display: flex;
+          align-items: center;
+          justify-content: center;
         }
 
         @media (min-width: 640px) {
@@ -116,22 +107,61 @@ export default function LandingHero() {
           }
         }
 
-        @keyframes rotate-ring {
-          0% {
-            filter: hue-rotate(0deg);
-          }
-          100% {
-            filter: hue-rotate(360deg);
+        /* Spinning gradient ring — pseudo-element, completely independent of the image */
+        .profile-circle-ring::before {
+          content: '';
+          position: absolute;
+          inset: -5px;
+          border-radius: 50%;
+          background: conic-gradient(
+            from 0deg,
+            #00bfff,
+            #007bff,
+            #a855f7,
+            #ec4899,
+            #00bfff
+          );
+          animation: spin-ring 4s linear infinite;
+          z-index: 0;
+        }
+
+        /* Blurred glow layer — also a pseudo-element, no impact on image */
+        .profile-circle-ring::after {
+          content: '';
+          position: absolute;
+          inset: -10px;
+          border-radius: 50%;
+          background: conic-gradient(
+            from 0deg,
+            #00bfff,
+            #007bff,
+            #a855f7,
+            #ec4899,
+            #00bfff
+          );
+          filter: blur(18px);
+          opacity: 0.55;
+          animation: spin-ring 4s linear infinite;
+          z-index: -1;
+        }
+
+        @keyframes spin-ring {
+          to {
+            transform: rotate(360deg);
           }
         }
 
+        /* Image container sits on top of both pseudo-elements, fully isolated */
         .profile-circle-inner {
-          width: 100%;
-          height: 100%;
+          position: relative;
+          z-index: 1;
+          width: calc(100% - 10px);
+          height: calc(100% - 10px);
           border-radius: 50%;
           overflow: hidden;
           border: 4px solid #0a0a0a;
           background: #0a0a0a;
+          isolation: isolate;
         }
 
         .profile-circle-img {
@@ -148,11 +178,12 @@ export default function LandingHero() {
           transform: scale(1.05);
         }
 
-        .profile-circle-wrapper:hover .profile-circle-ring {
-          box-shadow:
-            0 0 60px rgba(0, 191, 255, 0.6),
-            0 0 120px rgba(168, 85, 247, 0.4),
-            0 0 180px rgba(0, 191, 255, 0.15);
+        .profile-circle-wrapper:hover .profile-circle-ring::before {
+          animation-duration: 2s;
+        }
+
+        .profile-circle-wrapper:hover .profile-circle-ring::after {
+          opacity: 0.8;
           animation-duration: 2s;
         }
       `}</style>
