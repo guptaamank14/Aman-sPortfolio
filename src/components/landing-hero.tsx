@@ -40,15 +40,7 @@ export default function LandingHero() {
               </FadeUp>
               <FadeUp key="description" duration={0.6} delay={0.2}>
                 <div className="mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
-                  Hi, I&apos;m Aman Kumar Gupta, a passionate Data Science
-                  student who enjoys uncovering insights from complex data. I
-                  have a strong foundation in machine learning, statistical
-                  modeling, and AI, and I&apos;m driven by exploring how data
-                  can solve real-world problems and create meaningful impact.
-                  Whether it&apos;s building predictive models, optimizing
-                  algorithms, or visualizing analytics, I&apos;m always eager to
-                  learn new tools and continuously refine my skills in the
-                  evolving data landscape.
+                  {"Hi, I'm Aman Kumar Gupta, a passionate Data Science student who enjoys uncovering insights from complex data. I have a strong foundation in machine learning, statistical modeling, and AI, and I'm driven by exploring how data can solve real-world problems and create meaningful impact. Whether it's building predictive models, optimizing algorithms, or visualizing analytics, I'm always eager to learn new tools and continuously refine my skills in the evolving data landscape."}
                 </div>
               </FadeUp>
             </AnimatePresence>
