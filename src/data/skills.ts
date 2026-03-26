@@ -16,8 +16,6 @@ import ReactjsSvg from "@/public/icons/reactjs.svg";
 // Backend
 import NodejsSvg from "@/public/icons/nodejs.svg";
 
-
-
 export const SKILLS_DATA: SkillsShowcaseProps["skills"] = [
   {
     sectionName: "Languages",

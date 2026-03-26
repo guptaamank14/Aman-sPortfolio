@@ -18,12 +18,21 @@ export default function AboutHero() {
           </FadeUp>
           <FadeUp key="description-1" duration={0.6} delay={0.2}>
             <p className="mt-8 max-w-4xl text-base font-medium text-zinc-900 dark:text-zinc-300 sm:text-lg md:text-lg">
-              A technology enthusiast who enjoys building innovative solutions that solve real-world problems. I have a strong interest in artificial intelligence, machine learning, and software development, and I&apos;m passionate about exploring how these technologies can create meaningful impact.
+              A technology enthusiast who enjoys building innovative solutions
+              that solve real-world problems. I have a strong interest in
+              artificial intelligence, machine learning, and software
+              development, and I&apos;m passionate about exploring how these
+              technologies can create meaningful impact.
             </p>
           </FadeUp>
           <FadeUp key="description-2" duration={0.6} delay={0.4}>
             <p className="mt-8 max-w-4xl text-base font-medium text-zinc-900 dark:text-zinc-300 sm:text-lg md:text-lg">
-              I enjoy turning ideas into practical projects, whether it&apos;s developing intelligent systems, working with data, or building user-friendly applications. I&apos;m always eager to learn new tools, experiment with emerging technologies, and continuously improve my skills while creating projects that are both useful and impactful.
+              I enjoy turning ideas into practical projects, whether it&apos;s
+              developing intelligent systems, working with data, or building
+              user-friendly applications. I&apos;m always eager to learn new
+              tools, experiment with emerging technologies, and continuously
+              improve my skills while creating projects that are both useful and
+              impactful.
             </p>
           </FadeUp>
 

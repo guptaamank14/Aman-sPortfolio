@@ -4,7 +4,7 @@ export default function PageNotFound() {
       <div className="-mt-40 flex items-center gap-4 py-8 text-2xl font-bold text-accent md:text-5xl">
         <h1>404</h1>
         <span>:</span>
-        <span>Page not found</span>
+        <span>Page not found || HEHEHE</span>
       </div>
     </div>
   );
