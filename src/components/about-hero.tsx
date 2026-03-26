@@ -13,30 +13,17 @@ export default function AboutHero() {
         <AnimatePresence>
           <FadeUp key="title-greeting" duration={0.6}>
             <h1 className="text-6xl font-bold text-accent sm:text-7xl md:text-6xl lg:text-5xl xl:text-7xl">
-              Hi, I&apos;m Alok Kumar
+              Hi, I&apos;m Aman Kumar Gupta
             </h1>
           </FadeUp>
           <FadeUp key="description-1" duration={0.6} delay={0.2}>
             <p className="mt-8 max-w-4xl text-base font-medium text-zinc-900 dark:text-zinc-300 sm:text-lg md:text-lg">
-              I am a passionate software developer dedicated to turning complex
-              problems into elegant, user-centric digital experiences. With a
-              strong foundation in modern web technologies, I don&apos;t just
-              write code—I craft scalable, accessible, and performant solutions.
-              My commitment to design excellence ensures that every project I
-              touch is both functional and beautifully intuitive, bridging the
-              gap between technical requirements and user needs seamlessly.
+              A technology enthusiast who enjoys building innovative solutions that solve real-world problems. I have a strong interest in artificial intelligence, machine learning, and software development, and I&apos;m passionate about exploring how these technologies can create meaningful impact.
             </p>
           </FadeUp>
           <FadeUp key="description-2" duration={0.6} delay={0.4}>
             <p className="mt-8 max-w-4xl text-base font-medium text-zinc-900 dark:text-zinc-300 sm:text-lg md:text-lg">
-              My expertise spans across React.js, Next.js, JavaScript, and
-              TypeScript, allowing me to build robust full-stack applications. I
-              thrive in environments that challenge me to continuously learn and
-              adapt to new tools. Feel free to explore my latest{" "}
-              <Link href="/projects" className="underline underline-offset-4">
-                <span className="text-accent">projects</span>
-              </Link>{" "}
-              to see how I translate ideas into impactful software.
+              I enjoy turning ideas into practical projects, whether it&apos;s developing intelligent systems, working with data, or building user-friendly applications. I&apos;m always eager to learn new tools, experiment with emerging technologies, and continuously improve my skills while creating projects that are both useful and impactful.
             </p>
           </FadeUp>
 

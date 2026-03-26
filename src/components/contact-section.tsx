@@ -75,19 +75,19 @@ export default function ContactSection() {
             <p className="flex items-center gap-2">
               <strong className="text-foreground">Email:</strong>
               <a
-                href="mailto:aloksharma1097@gmail.com"
+                href="mailto:guptaamank14@gmail.com"
                 className="transition-colors hover:text-accent"
               >
-                aloksharma1097@gmail.com
+                guptaamank14@gmail.com
               </a>
             </p>
             <p className="flex items-center gap-2">
               <strong className="text-foreground">Phone:</strong>
               <a
-                href="tel:+918235445601"
+                href="tel:+919755292642"
                 className="transition-colors hover:text-accent"
               >
-                +91-8235445601
+                +91 97552 92642
               </a>
             </p>
           </div>
@@ -97,7 +97,7 @@ export default function ContactSection() {
           <h3 className="text-2xl font-semibold text-foreground">Follow Me</h3>
           <div className="flex flex-col gap-4 text-lg font-medium text-zinc-600 dark:text-zinc-400">
             <a
-              href="https://www.linkedin.com/in/alokkksharmaa/"
+              href="https://www.linkedin.com/in/amankumargupta2023"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 transition-colors hover:text-accent"
@@ -105,7 +105,7 @@ export default function ContactSection() {
               <LinkedinIcon className="h-6 w-6" /> LinkedIn
             </a>
             <a
-              href="https://github.com/alokkksharmaa"
+              href="https://github.com/guptaamank14"
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-3 transition-colors hover:text-accent"

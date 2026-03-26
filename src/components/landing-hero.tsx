@@ -32,17 +32,16 @@ export default function LandingHero() {
             <AnimatePresence>
               <FadeUp key="title-main" duration={0.6}>
                 <h1 className="bg-accent bg-clip-text py-2 text-5xl font-bold text-transparent sm:text-6xl md:text-7xl xl:text-8xl">
-                  Alok Kumar
+                  Aman kumar Gupta
                 </h1>
                 <span className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
-                  Software Developer
+                  Data Science Student
                 </span>
               </FadeUp>
               <FadeUp key="description" duration={0.6} delay={0.2}>
                 <div className="mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
-                  Full Stack Engineer | Learning Devops &amp; Cloud |C++ &amp;
-                  DSA | Attented 4+, National Hackathon Winner 1 x🏆| Building
-                  Scalable Websites | Open Source and Linux Enthusiast
+                  Hi, I&apos;m Aman Kumar Gupta, a passionate Data Science student who enjoys uncovering insights from complex data. I have a strong foundation in machine learning, statistical modeling, and AI, and I&apos;m driven by exploring how data can solve real-world problems and create meaningful impact. Whether it&apos;s building predictive models, optimizing algorithms, or visualizing analytics, I&apos;m always eager to learn new tools and continuously refine my skills in the evolving data landscape.
+
                 </div>
               </FadeUp>
             </AnimatePresence>
@@ -57,7 +56,7 @@ export default function LandingHero() {
                     <div className="profile-circle-inner">
                       <img
                         src="/images/profile.png"
-                        alt="Alok Kumar - Profile"
+                        alt="Aman kumar Gupta - Profile"
                         className="profile-circle-img"
                       />
                     </div>

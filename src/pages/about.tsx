@@ -19,18 +19,18 @@ export default function About() {
   return (
     <>
       <NextSeo
-        title="About Alok Kumar | Software Developer"
-        description="Learn more about Alok Kumar, a dedicated Software Developer with 2 years of experience. Discover the journey, skills, and passion that drive me to create innovative and user-friendly web solutions."
+        title="About Aman kumar Gupta | Software Developer"
+        description="Learn more about Aman kumar Gupta, a dedicated Software Developer with 2 years of experience. Discover the journey, skills, and passion that drive me to create innovative and user-friendly web solutions."
         canonical={`${siteMetadata.siteUrl}/about`}
         openGraph={{
           url: `${siteMetadata.siteUrl}/about`,
-          title: "Learn About Alok Kumar - Software Developer",
+          title: "Learn About Aman kumar Gupta - Software Developer",
           description:
-            "Dive into the story of Alok Kumar, a Software Developer. Uncover the experiences, skills, and passion that fuel a commitment to delivering exceptional web solutions.",
+            "Dive into the story of Aman kumar Gupta, a Software Developer. Uncover the experiences, skills, and passion that fuel a commitment to delivering exceptional web solutions.",
           images: [
             {
               url: `${siteMetadata.siteUrl}${siteMetadata.twitterImage}`,
-              alt: "Alok Kumar - Portfolio Image",
+              alt: "Aman kumar Gupta - Portfolio Image",
             },
           ],
           siteName: siteMetadata.siteName,

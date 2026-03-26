@@ -1,14 +1,6 @@
-import dynamic from "next/dynamic";
 import FadeUp from "@/animation/fade-up";
 import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700" />
-  ),
-});
 
 type Certification = {
   id: string;
@@ -26,42 +18,64 @@ type Certification = {
 
 const CERTIFICATIONS: Certification[] = [
   {
-    id: "oracle-db-foundation",
-    title: "Oracle Database Foundations Certified Junior Associate",
-    issuer: "Oracle",
-    university: "Certification",
-    result: "🏅 Certified",
-    issued: "Mar 2026",
-    expires: "Mar 2028",
-    credentialId: "322946959OCI25DCFA",
-    pdfPath: "/Oracle.jpg",
-    download: "Oracle-Database-Foundations-Certified.jpg",
-    color: "#e84118, #c23616",
-  },
-  {
-    id: "nptel-industry4",
-    title: "Introduction to Industry 4.0 and Industrial Internet of Things",
-    issuer: "Indian Institute of Technology, Kharagpur",
-    university: "Certification",
-    result: "🏅 Certified",
-    issued: "Jul 2025",
-    expires: "Nov 2025",
-    credentialId: "NPTEL25CS146S958700050",
-    pdfPath: "/NPTEL.jpg",
-    download: "NPTEL-Industry-4.0.jpg",
-    color: "#0984e3, #74b9ff",
-  },
-  {
-    id: "aws-student-community",
-    title: "AWS Student Community Day Participant",
-    issuer: "Amazon Web Services (AWS)",
-    university: "Participation",
-    result: "🏅 Participant",
-    issued: "Dec 2025",
+    id: "summer-training",
+    title: "Summer Training Certificate",
+    issuer: "Summer Training Program",
+    university: "—",
+    result: "✅ Completed",
+    issued: "2025",
     credentialId: "—",
-    pdfPath: "/AWS.png",
-    download: "AWS-Student-Community-Day.png",
-    color: "#ff9900, #e67e22",
+    pdfPath: "/aman-summer-training-certificate.pdf",
+    download: "Aman-Summer-Training-Certificate.pdf",
+    color: "#38bdf8, #6366f1",
+  },
+  {
+    id: "infosys",
+    title: "Infosys Certificate",
+    issuer: "Infosys",
+    university: "—",
+    result: "✅ Completed",
+    issued: "2025",
+    credentialId: "—",
+    pdfPath: "/images/aman-infosys-certificate.jpeg",
+    download: "Aman-Infosys-Certificate.jpeg",
+    color: "#0ea5e9, #6366f1",
+  },
+  {
+    id: "coding-wise",
+    title: "Coding Wise Certificate",
+    issuer: "Coding Wise",
+    university: "—",
+    result: "✅ Completed",
+    issued: "2025",
+    credentialId: "—",
+    pdfPath: "/images/aman-coding-wise-certificate.jpeg",
+    download: "Aman-Coding-Wise-Certificate.jpeg",
+    color: "#f97316, #eab308",
+  },
+  {
+    id: "freecodecamp",
+    title: "FreeCodeCamp Certification",
+    issuer: "FreeCodeCamp",
+    university: "—",
+    result: "✅ Completed",
+    issued: "2025",
+    credentialId: "—",
+    pdfPath: "/images/aman-freecode-camp-certification.jpeg",
+    download: "Aman-FreeCodeCamp-Certification.jpeg",
+    color: "#22c55e, #06b6d4",
+  },
+  {
+    id: "udemy",
+    title: "Udemy Certificate",
+    issuer: "Udemy",
+    university: "—",
+    result: "✅ Completed",
+    issued: "2025",
+    credentialId: "—",
+    pdfPath: "/images/aman-udemy-certificate.jpeg",
+    download: "Aman-Udemy-Certificate.jpeg",
+    color: "#a855f7, #ec4899",
   },
 ];
 
@@ -93,7 +107,16 @@ export default function CertificationsSection() {
 
                 <div className="ach-thumb-wrapper">
                   {cert.pdfPath.toLowerCase().endsWith(".pdf") ? (
-                    <PdfThumbnail src={cert.pdfPath} width={200} />
+                    <object
+                      data={`${cert.pdfPath}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                      type="application/pdf"
+                      className="ach-object h-full w-full"
+                      aria-label={cert.title}
+                    >
+                      <div className="flex h-full w-full items-center justify-center bg-zinc-100 text-xs text-zinc-500">
+                        PDF Unavailable
+                      </div>
+                    </object>
                   ) : (
                     <div className="relative h-full w-full">
                       <Image
@@ -241,7 +264,7 @@ export default function CertificationsSection() {
         }
 
         .ach-thumb-wrapper {
-          width: 130px;
+          width: 180px;
           aspect-ratio: 297 / 210;
           background: #fff;
           overflow: hidden;

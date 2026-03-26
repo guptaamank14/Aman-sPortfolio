@@ -1,14 +1,6 @@
-import dynamic from "next/dynamic";
 import FadeUp from "@/animation/fade-up";
 import { AnimatePresence } from "framer-motion";
 import Image from "next/image";
-
-const PdfThumbnail = dynamic(() => import("@/components/pdf-thumbnail"), {
-  ssr: false,
-  loading: () => (
-    <div className="h-full w-full animate-pulse bg-zinc-200 dark:bg-zinc-700" />
-  ),
-});
 
 type Achievement = {
   id: string;
@@ -26,18 +18,6 @@ type Achievement = {
 
 const ACHIEVEMENTS: Achievement[] = [
   {
-    id: "hidevs",
-    title: "Cod-A-Fest 3.0",
-    issuer: "LYNQUP PRIVATE LIMITED",
-    university: "Lovely Professional University",
-    result: "🏆 Won the Hackathon",
-    issued: "Feb 2026",
-    credentialId: "CAF3-2026-071",
-    pdfPath: "/HiDevs-Cod-A-Fest-3.0.pdf",
-    download: "HiDevs-Cod-A-Fest-3.0-Certificate.pdf",
-    color: "#f59e0b, #ef4444",
-  },
-  {
     id: "d4community",
     title: "Hackathon — Runner Up",
     issuer: "D4 Community",
@@ -45,22 +25,9 @@ const ACHIEVEMENTS: Achievement[] = [
     result: "🥈 Secured Runner Up",
     issued: "Mar 2026",
     credentialId: "HNW03D4-2026-03-47702542",
-    pdfPath: "/Alok-Kumar-HNW03D42026-certificate.pdf",
-    download: "Alok-Kumar-HNW03D4-Certificate.pdf",
+    pdfPath: "/aman-hackathon-certificate.pdf",
+    download: "Aman-Hackathon-Certificate.pdf",
     color: "#a3e635, #059669",
-  },
-  {
-    id: "iiit-nagpur",
-    title: "Hackathon",
-    issuer: "Training and Placement Cell, IIIT Nagpur",
-    university: "IIIT Nagpur",
-    result: "🥉 Secured 3rd Position",
-    issued: "Sep 2025",
-    expires: "Sep 2025",
-    credentialId: "—",
-    pdfPath: "/iiit-nagpur.pdf",
-    download: "IIIT-Nagpur-Hackathon-Certificate.pdf",
-    color: "#818cf8, #6366f1",
   },
 ];
 
@@ -94,7 +61,16 @@ export default function AchievementsSection() {
                 {/* Thumbnail — crisp canvas render scaled down for speed or static image */}
                 <div className="ach-thumb-wrapper">
                   {ach.pdfPath.toLowerCase().endsWith(".pdf") ? (
-                    <PdfThumbnail src={ach.pdfPath} width={200} />
+                    <object
+                      data={`${ach.pdfPath}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                      type="application/pdf"
+                      className="ach-object h-full w-full"
+                      aria-label={ach.title}
+                    >
+                      <div className="flex h-full w-full items-center justify-center bg-zinc-100 text-xs text-zinc-500">
+                        PDF Unavailable
+                      </div>
+                    </object>
                   ) : (
                     <div className="relative h-full w-full">
                       <Image
@@ -261,7 +237,7 @@ export default function AchievementsSection() {
         }
 
         .ach-thumb-wrapper {
-          width: 130px;
+          width: 180px;
           aspect-ratio: 297 / 210;
           background: #fff;
           overflow: hidden;
