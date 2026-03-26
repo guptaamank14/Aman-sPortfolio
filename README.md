@@ -2,6 +2,9 @@
 
 This portfolio is crafted using [Next.js](https://nextjs.org/)
 
+#link  to the portfolio
+(https://amann-portfollio.netlify.app/)
+
 ## 🖥️ Technologies Used
 
 - [Nextjs.js](https://nextjs.org/) : A React-based, open-source framework for building efficient and scalable web applications.
