@@ -35,13 +35,13 @@ export default function LandingHero() {
                   Aman kumar Gupta
                 </h1>
                 <span className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
-                  Data Science Student
+                  Machine Learning Student
                 </span>
               </FadeUp>
               <FadeUp key="description" duration={0.6} delay={0.2}>
                 <div className="mt-8 max-w-3xl text-base font-semibold text-zinc-900 dark:text-zinc-200 sm:text-base md:text-xl">
                   {
-                    "Hi, I'm Aman Kumar Gupta, a passionate Data Science student who enjoys uncovering insights from complex data. I have a strong foundation in machine learning, statistical modeling, and AI, and I'm driven by exploring how data can solve real-world problems and create meaningful impact. Whether it's building predictive models, optimizing algorithms, or visualizing analytics, I'm always eager to learn new tools and continuously refine my skills in the evolving data landscape."
+                    "Hi, I'm Aman Kumar Gupta, a passionate Machine Learning student who enjoys building intelligent systems that learn from complex data. I have a strong foundation in deep learning, statistical modeling, and AI, and I'm driven by exploring how these technologies can solve real-world problems and create meaningful impact. Whether it's training predictive models, optimizing neural networks, or deploying AI solutions, I'm always eager to learn new algorithms and continuously refine my skills in the evolving AI landscape."
                   }
                 </div>
               </FadeUp>
