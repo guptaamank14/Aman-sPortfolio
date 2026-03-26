@@ -13,23 +13,23 @@ export const EDUCATION: ExperienceShowcaseListItemProps[] = [
       "Currently pursuing B.Tech in Computer Science and Engineering.",
   },
   {
-    title: "+2",
+    title: "Intermediate",
     organisation: {
-      name: "Tender Heart Senior Secondary School",
+      name: "Aklank Public School",
       href: "",
     },
-    date: "Jul 2021 - May 2023",
-    location: "India",
-    description: "Completed higher secondary education.",
+    date: "April 2020 - March 2021",
+    location: "Basant Vihar, Kota",
+    description: "Percentage: 79.9",
   },
   {
-    title: "High School",
+    title: "Matriculation",
     organisation: {
-      name: "St. Mary's Public School",
+      name: "DAV Mukhyamantri Public School",
       href: "",
     },
-    date: "Apr 2012 - Apr 2021",
-    location: "India",
-    description: "Completed secondary education.",
+    date: "April 2018 - March 2019",
+    location: "Balrampur, Chhattisgarh",
+    description: "Percentage: 85.5",
   },
 ];
