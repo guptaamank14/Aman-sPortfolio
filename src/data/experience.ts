@@ -2,13 +2,13 @@ import { type ExperienceShowcaseListItemProps } from "@/components/experience/ex
 
 export const EXPERIENCE: ExperienceShowcaseListItemProps[] = [
   {
-    title: "Intern",
+    title: "Logic Building, Programming and Data Structures: Learn How to Think, Program and Apply",
     organisation: {
-      name: "Webstack Academy - WSA · Internship",
-      href: "https://www.webstackacademy.com/",
+      name: "Centre for Professional Enhancement, LPU",
+      href: "https://www.lpu.in/",
     },
-    date: "Nov 2025 - Jan 2026 · 3 mos",
-    location: "Remote",
-    description: "React.js, Responsive Web Design and +2 skills",
+    date: "13 June 2025 - 18 July 2025",
+    location: "Lovely Professional University",
+    description: "Completed skill development course with Grade A. Student of Bachelor of Technology (Computer Science and Engineering).",
   },
 ];

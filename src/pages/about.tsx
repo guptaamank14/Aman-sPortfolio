@@ -51,7 +51,7 @@ export default function About() {
       <CVSection />
       <AchievementsSection />
       <CertificationsSection />
-      <ExperienceShowcaseList title="Experience" details={EXPERIENCE} />
+      <ExperienceShowcaseList title="Training Details" details={EXPERIENCE} />
       <ExperienceShowcaseList title="Education" details={EDUCATION} />
     </>
   );
