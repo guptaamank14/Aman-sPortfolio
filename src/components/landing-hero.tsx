@@ -35,7 +35,7 @@ export default function LandingHero() {
                   Aman kumar Gupta
                 </h1>
                 <span className="text-xl font-semibold text-zinc-900 dark:text-zinc-100 md:text-3xl">
-                  Machine Learning Student
+                  Aspiring Ai and ml engineer
                 </span>
               </FadeUp>
               <FadeUp key="description" duration={0.6} delay={0.2}>
